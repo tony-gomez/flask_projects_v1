@@ -1,0 +1,11 @@
+<h1>{{ question.question_text }}</h1>
+
+
+<form action="{{ url_for('vote',question_id=question.id) }}" method="post">
+	{% for choice in question.choices %}
+	<input type="radio" name="choice" id="choice{{ loop.index }}" value="{{ choice.id }}">
+    <label for="choice{{ loop.index }}">{{ choice.choice_text}}</label><br>
+	{% endfor %}
+
+	<input type="submit" value="Vote">
+</form>
